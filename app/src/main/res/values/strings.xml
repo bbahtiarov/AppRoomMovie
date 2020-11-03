@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AppRoomMovie</string>
+    <string name="vote_average">Rating:</string>
+    <string name="release_date">Release date:</string>
+    <string name="overview">Overview:</string>
+    <string name="original_language">Original language:</string>
+    <string name="menu_title">Menu</string>
+    <string name="favorites_title">Favourites</string>
+    <string name="profile_title">Profile</string>
+    <string name="save_movie">Movie saved successfully</string>
+    <string name="delete_movie">Successfully deleted movie</string>
+</resources>

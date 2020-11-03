@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_width">150dp</dimen>
+    <dimen name="card_height">250dp</dimen>
+    <dimen name="app_margin">16dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="normal_text_size">16sp</dimen>
+    <dimen name="detail_movie_height">450dp</dimen>
+    <dimen name="large_text_size">20sp</dimen>
+</resources>
