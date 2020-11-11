@@ -7,26 +7,25 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.approommovie.R
 import com.example.approommovie.data.models.Movie
-import com.example.approommovie.data.room.MovieDb
-import com.example.approommovie.data.room.MovieRepository
 import com.example.approommovie.presentation.factories.DetailViewModelProviderFactory
-import com.example.approommovie.presentation.factories.MainViewModelProviderFactory
-import com.example.approommovie.utils.APP_ACTIVITY
 import com.example.approommovie.utils.POSTER_BASE_URL
 import com.example.approommovie.utils.downloadAndSetImage
 import com.example.approommovie.utils.showSnackbar
-import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.detail_fragment.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DetailFragment : Fragment(R.layout.detail_fragment) {
 
     lateinit var viewModel: DetailViewModel
     private val args: DetailFragmentArgs by navArgs()
 
+    @Inject
+    lateinit var viewModelProviderFactory:DetailViewModelProviderFactory
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val newsRepository = MovieRepository(MovieDb(APP_ACTIVITY))
-        val viewModelProviderFactory = DetailViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(DetailViewModel::class.java)
 
         val movie = args.movie

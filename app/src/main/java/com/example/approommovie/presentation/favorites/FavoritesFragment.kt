@@ -16,17 +16,21 @@ import com.example.approommovie.presentation.factories.FavoritesViewModelProvide
 import com.example.approommovie.presentation.adapters.MovieAdapter
 import com.example.approommovie.utils.APP_ACTIVITY
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.favorites_fragment.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment(R.layout.favorites_fragment) {
 
     private lateinit var viewModel: FavoritesViewModel
     lateinit var movieAdapter: MovieAdapter
 
+    @Inject
+    lateinit var viewModelProviderFactory:FavoritesViewModelProviderFactory
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val newsRepository = MovieRepository(MovieDb(APP_ACTIVITY))
-        val viewModelProviderFactory = FavoritesViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(FavoritesViewModel::class.java)
 
         setupRecyclerView()

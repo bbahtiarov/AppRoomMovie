@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.approommovie.MainActivity
+import com.example.approommovie.MovieApplication
 import com.example.approommovie.R
 import com.example.approommovie.data.room.MovieDb
 import com.example.approommovie.data.room.MovieRepository
@@ -18,8 +20,11 @@ import com.example.approommovie.presentation.adapters.MovieAdapter
 import com.example.approommovie.utils.APP_ACTIVITY
 import com.example.approommovie.utils.QUERY_PAGE_SIZE
 import com.example.approommovie.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     var isLoading = false
@@ -27,12 +32,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private lateinit var viewModel: MainViewModel
     lateinit var newsAdapter: MovieAdapter
 
+    @Inject
+    lateinit var viewModelProviderFactory: MainViewModelProviderFactory
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val newsRepository = MovieRepository(MovieDb(APP_ACTIVITY))
-        val viewModelProviderFactory = MainViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(MainViewModel::class.java)
-
         setupRecyclerView()
 
         newsAdapter.setOnItemClickListener {
