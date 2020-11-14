@@ -35,9 +35,9 @@ class FavoritesFragment : Fragment(R.layout.favorites_fragment) {
 
         setupRecyclerView()
 
-        movieAdapter.setOnItemClickListener {
+        movieAdapter.setOnItemClickListener {movie ->
             val bundle = Bundle().apply {
-                putSerializable("movie", it)
+                putSerializable("movie", movie)
             }
             findNavController().navigate(R.id.action_favoritesFragment_to_detailFragment, bundle)
         }
@@ -55,7 +55,7 @@ class FavoritesFragment : Fragment(R.layout.favorites_fragment) {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
+                val position = viewHolder.absoluteAdapterPosition
                 val movie = movieAdapter.differ.currentList[position]
                 viewModel.deleteMovie(movie)
                 Snackbar.make(view, getString(R.string.delete_movie), Snackbar.LENGTH_LONG).apply {
@@ -71,8 +71,8 @@ class FavoritesFragment : Fragment(R.layout.favorites_fragment) {
             attachToRecyclerView(favorites_recyclerView)
         }
 
-        viewModel.getSavedMovies().observe(viewLifecycleOwner, Observer { articles ->
-            movieAdapter.differ.submitList(articles)
+        viewModel.getSavedMovies().observe(viewLifecycleOwner, Observer {  movies ->
+            movieAdapter.differ.submitList(movies)
         })
     }
 

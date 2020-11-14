@@ -14,6 +14,6 @@ class FavoritesViewModel(private val movieRepository: MovieRepository) : ViewMod
     fun getSavedMovies() = movieRepository.getSavedMovies()
 
     fun deleteMovie(movie: Movie) = viewModelScope.launch {
-        movieRepository.deleteArticle(movie)
+        movieRepository.deleteMovie(movie)
     }
 }

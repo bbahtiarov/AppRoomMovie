@@ -58,7 +58,7 @@
                 app:layout_constraintBaseline_toBaselineOf="@+id/vote_average"
                 app:layout_constraintStart_toEndOf="@+id/vote_average"
                 app:layout_constraintTop_toBottomOf="@+id/vote_average"
-                tools:text="222" />
+                tools:text="222"/>
 
             <TextView
                 android:id="@+id/release_date"

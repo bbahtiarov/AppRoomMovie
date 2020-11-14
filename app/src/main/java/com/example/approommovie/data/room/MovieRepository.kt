@@ -10,5 +10,5 @@ class MovieRepository(private val db: MovieDb) {
 
     fun getSavedMovies() = db.getMovieDao().getAllMovies()
 
-    suspend fun deleteArticle(movie: Movie) = db.getMovieDao().deleteMovie(movie)
+    suspend fun deleteMovie(movie: Movie) = db.getMovieDao().deleteMovie(movie)
 }

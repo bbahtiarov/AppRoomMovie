@@ -47,6 +47,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundle)
         }
 
+        observeMovies()
+    }
+
+    private fun observeMovies(){
         viewModel.movies.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
