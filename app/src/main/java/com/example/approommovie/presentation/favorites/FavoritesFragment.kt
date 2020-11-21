@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.approommovie.R
-import com.example.approommovie.data.room.MovieDb
-import com.example.approommovie.data.room.MovieRepository
-import com.example.approommovie.presentation.factories.FavoritesViewModelProviderFactory
 import com.example.approommovie.presentation.adapters.MovieAdapter
-import com.example.approommovie.utils.APP_ACTIVITY
+import com.example.approommovie.presentation.factories.FavoritesViewModelProviderFactory
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.favorites_fragment.*
